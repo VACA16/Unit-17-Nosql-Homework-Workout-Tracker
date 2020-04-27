@@ -1,4 +1,4 @@
-const Work = require("../models/workouts.js");
+const Work = require("../models/work.js");
 
 module.exports = function(app) {
 
