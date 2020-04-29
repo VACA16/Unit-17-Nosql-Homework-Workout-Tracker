@@ -14,7 +14,7 @@ require("./seeders/seed.js");
 require("./routes/apiRoutes.js")(app);
 require("./routes/htmlRoutes.js")(app);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://randy:pastor16:heroku_4t1crm05", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://randy:pastor16@ds117739.mlab.com:17739/heroku_4t1crm05", {
     useNewUrlParser: true
 });
 
