@@ -34,4 +34,4 @@ const workSchema = new Schema({
 
 const Work = mongoose.model("Work", workSchema);
 
-module.export = Work;
+module.exports = Work;
