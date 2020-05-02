@@ -10,7 +10,6 @@ app.use(express.static("public"));
 
 htmlRoutes(app);
 
-require("./seeders/seed.js");
 require("./routes/apiRoutes.js")(app);
 require("./routes/htmlRoutes.js")(app);
 

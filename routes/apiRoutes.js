@@ -1,9 +1,9 @@
-const Work = require("../models/work.js");
+const Workout = require("../models/work.js");
 
 module.exports = function(app) {
 
     app.get("/api/workouts", (req, res) => {
-        Work.findOne({})
+        Workout.find({})
             .then(dbWork => {
                 res.json(dbWork);
             })
@@ -13,18 +13,19 @@ module.exports = function(app) {
     });
 
     app.put("/api/workouts/:id", (req, res) => {
-        Work.update({
-                where: {
-                    id: req.params.id
-                }
+        console.log(req.params);
+        Workout.findByIdAndUpdate(
+                req.params.id, { $push: { exercises: req.body } }, { new: true, runValidators: true })
+            .then(dbWork => {
+                res.json(dbWork);
             })
             .catch(err => {
                 res.status(400).json(err);
             });
     });
 
-    app.post("/api/workouts", ({ body }, res) => {
-        Work.create(body)
+    app.post("/api/workouts", (req, res) => {
+        Workout.create({})
             .then(dbWork => {
                 res.json(dbWork);
             })
@@ -34,7 +35,7 @@ module.exports = function(app) {
     });
 
     app.get("/api/workouts/range", (req, res) => {
-        Work.findAll({})
+        Workout.find({})
             .then(dbWork => {
                 res.json(dbWork);
             })

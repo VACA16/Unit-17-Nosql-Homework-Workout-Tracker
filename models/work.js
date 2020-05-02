@@ -3,35 +3,39 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const workSchema = new Schema({
-    type: {
-        type: String,
-        trim: true,
-        required: "Enter type of exercise type"
-    },
-    name: {
-        type: String,
-        trim: true,
-        required: "Enter type of exercise name"
-    },
-    duration: {
-        type: Number,
-        required: "Enter duration"
-    },
-    weight: {
-        type: Number,
-        required: "Enter weight"
-    },
-    reps: {
-        type: Number,
-        required: "Enter number of reps"
-    },
-    sets: {
-        type: Number,
-        required: "Enter number of sets"
-    },
 
+    day: {
+        _type: Date,
+        default: () => new Date()
+    },
+    exercises: [{
+        type: {
+            _type: String,
+            trim: true,
+        },
+        name: {
+            _type: String,
+            trim: true,
+        },
+        duration: {
+            _type: Number,
+        },
+        weight: {
+            _type: Number,
+        },
+        reps: {
+            _type: Number,
+        },
+        sets: {
+            _type: Number,
+        }
+    }]
+
+
+}, {
+    typeKey: "_type"
 });
 
-const Work = mongoose.model("Work", workSchema);
+const Workout = mongoose.model("workout", workSchema);
 
-module.exports = Work;
+module.exports = Workout;
